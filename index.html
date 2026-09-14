@@ -1,20 +1,53 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0e0b14"><title>Aware Minds</title><link rel="stylesheet" href="assets/app.css"></head><body>
-<div id="intro" class="intro"><button id="skipIntro" class="ghost intro-skip">Skip</button><div class="intro-center"><div class="flow"><span>IDEA</span><i></i><span>BUILD</span><i></i><span>GITHUB</span><i></i><span>LIVE</span></div><div class="brain"><b></b><b></b></div><h1>AWARE MINDS</h1><p>From your first idea to a live project.</p></div></div>
-<div id="app" class="shell">
-<aside class="rail"><a class="brand" href="#" aria-label="Aware Minds"><div class="mini-brain"><b></b><b></b></div><span>AWARE<br>MINDS</span></a><nav><button class="nav active" data-view="projects"><span>▦</span>Projects</button><button class="nav" data-view="guide"><span>◇</span>Guide</button><button class="nav" data-view="learn"><span>▤</span>Learn</button><button class="nav" data-view="settings"><span>⚙</span>Settings</button></nav><div class="rail-bottom"><button id="lostBtn" class="lost">I’m lost</button><small>Stored on this computer</small></div></aside>
-<header class="topbar"><button id="menuBtn" class="mobile-menu">☰</button><div><small id="eyebrow">YOUR WORKSPACE</small><strong id="pageTitle">Projects</strong></div><div class="top-actions"><button id="levelBtn" class="pill">Beginner ▾</button><button id="themeBtn" class="icon-btn" aria-label="Change theme">◐</button><button id="commandBtn" class="icon-btn" title="Command menu (Ctrl+K)">⌘</button></div></header>
-<main id="main" class="main">
-<section id="projectsView" class="view active">
-<div id="emptyState" class="empty"><div class="empty-visual"><div class="orbit one"></div><div class="orbit two"></div><div class="project-cube">＋</div></div><small>START WHERE YOU ARE</small><h2>What would you like to do?</h2><p>You do not need to know the technical steps yet. Choose a goal and Aware Minds will organize the path.</p><div class="start-grid"><button data-start="new"><b>Build my first project</b><span>Turn an idea into a working project.</span></button><button data-start="local"><b>Open a project from my computer</b><span>Continue a folder you already have.</span></button><button data-start="github"><b>Continue from GitHub</b><span>Download and work on a repository.</span></button><button data-start="fix"><b>Fix a project</b><span>Understand and repair what failed.</span></button></div><button class="text-btn" data-start="sample">Or learn by building a sample portfolio →</button></div>
-<div id="library" class="library hidden"><div class="section-head"><div><small>PROJECT LIBRARY</small><h2>Your projects</h2><p>Choose a project to continue from its last completed stage.</p></div><button class="primary" data-start="new">＋ New project</button></div><div id="projectGrid" class="project-grid"></div></div>
-</section>
-<section id="guideView" class="view"><div class="guide-layout"><div class="guide-copy"><small>BEGINNER ROADMAP</small><h2>Build a complete project, one real step at a time.</h2><p>This guide does not create a fake practice file. Every completed step belongs to your actual project.</p><div class="guide-steps" id="guideSteps"></div></div><div class="map"><h3>How a modern project fits together</h3><div class="map-node front">Frontend<small>What people see</small></div><div class="map-line"></div><div class="map-node back">Backend<small>Rules and operations</small></div><div class="map-row"><div class="map-node data">Database<small>Saved information</small></div><div class="map-node git">GitHub<small>Project history</small></div><div class="map-node host">Hosting<small>Live website</small></div></div><p id="mapHelp">Select a part to understand its role.</p></div></div></section>
-<section id="learnView" class="view"><div class="section-head"><div><small>REFERENCE LIBRARY</small><h2>Learn only what you need next.</h2><p>Short explanations connected to practical project work.</p></div></div><div id="lessonGrid" class="lesson-grid"></div></section>
-<section id="settingsView" class="view"><div class="settings-panel"><small>WORKSPACE</small><h2>Settings</h2><label>Experience level<select id="levelSelect"><option>Beginner</option><option>Practising</option><option>Professional</option></select></label><label class="switch-row"><span><b>Show technical names</b><small>Display terms such as commit, branch and environment variable.</small></span><input id="termsToggle" type="checkbox"></label><label class="switch-row"><span><b>Reduce motion</b><small>Use fades instead of moving transitions.</small></span><input id="motionToggle" type="checkbox"></label><button id="resetBtn" class="danger">Reset local interface preferences</button></div></section>
-</main>
-<div id="projectWorkspace" class="workspace hidden"><aside class="toolbox"><button class="tool active" data-tool="roadmap">Roadmap</button><button class="tool" data-tool="pages">Pages</button><button class="tool" data-tool="files">Files</button><button class="tool" data-tool="database">Database</button><button class="tool" data-tool="github">GitHub</button><button class="tool" data-tool="deploy">Publish</button></aside><section class="workstage"><div class="workspace-head"><button id="backLibrary" class="text-btn">← All projects</button><div><small id="projectStage">STEP 1 OF 6</small><h2 id="workspaceTitle">Plan your project</h2></div><button id="previewBtn" class="ghost">Preview website</button></div><div id="workspaceContent" class="workspace-content"></div><div class="journey" id="journey"></div></section><aside class="inspector"><small>YOUR NEXT ACTION</small><h3 id="nextTitle">Describe what you want to build</h3><p id="nextHelp">Answer a few simple questions. You can change the plan later.</p><button id="nextAction" class="primary wide">Start this step →</button><hr><button id="explainBtn" class="plain">What does this mean?</button><button id="showBtn" class="plain">Show me where</button><button id="restoreBtn" class="plain">Restore last working version</button></aside></div>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#14111b"><title>Aware Minds — Developer Workspace</title>
+<link rel="icon" href="assets/brand.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/app.css"></head>
+<body>
+<div class="splash" id="splash" aria-label="Aware Minds loading">
+  <button class="skip" data-action="skip">Skip</button>
+  <div class="splashFlow"><span>IDEA</span><i></i><span>BUILD</span><i></i><span>GITHUB</span><i></i><span>LIVE</span></div>
+  <img src="assets/brand.svg" alt="Aware Minds"><p>Everything you need to take a project from idea to live.</p>
 </div>
-<div id="modal" class="modal hidden"><div class="modal-card"><button id="closeModal" class="modal-close">×</button><div id="modalBody"></div></div></div>
-<div id="command" class="command hidden"><input id="commandInput" placeholder="Search or type an action…"><kbd>Esc</kbd><div id="commandResults"></div></div>
-<div id="toast" class="toast hidden"></div>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <button class="brand" data-action="home"><img src="assets/brand.svg" alt=""><span>AWARE MINDS</span></button>
+  <nav id="nav">
+    <button class="active" data-view="projects"><span>▦</span>Projects</button>
+    <button data-view="guide"><span>◇</span>Build guide</button>
+    <button data-view="learn"><span>▤</span>Learn</button>
+    <button data-view="settings"><span>⚙</span>Settings</button>
+  </nav>
+  <div class="sideFoot"><button data-action="lost">I’m lost</button><small>Private • stored on this computer</small></div>
+</aside>
+<header class="topbar"><button class="mobile" data-action="menu">☰</button><div class="crumb"><small id="crumb">WORKSPACE</small><b id="title">Projects</b></div>
+<div class="topActions"><button class="level" data-action="level">Beginner⌄</button><button title="Learn about this page" data-action="info">ⓘ</button><button title="Switch theme" data-action="theme">◐</button><button title="Command menu" data-action="commands">⌘</button></div></header>
+<main id="main">
+<section class="page active" data-page="projects">
+  <div class="hero"><div><small>YOUR PROJECT LIBRARY</small><h1>Build without getting lost.</h1><p>Start, understand, edit and publish software from one focused workspace.</p></div>
+  <button class="primary" data-action="new">＋ New project</button></div>
+  <div class="empty" id="empty"><div class="orbit"><span>＋</span></div><h2>What would you like to do?</h2><p>Choose a goal. Aware Minds will organize the technical steps.</p>
+    <div class="choices"><button data-action="new"><b>Build my first project</b><small>Idea → plan → working files</small></button><button data-action="folder"><b>Open a computer folder</b><small>Edit an existing local project</small></button><button data-action="clone"><b>Continue from GitHub</b><small>Clone a repository safely</small></button><button data-action="repair"><b>Fix a project</b><small>Follow a diagnostic workflow</small></button></div>
+  </div>
+  <div class="projects hidden" id="projectList"></div>
+</section>
+<section class="page" data-page="guide"><div class="pageHead"><small>START-TO-LAUNCH ROADMAP</small><h1>One project. Seven understandable stages.</h1><p>Each stage teaches the idea, then helps you do the real work.</p></div><div class="guideGrid" id="guideGrid"></div></section>
+<section class="page" data-page="learn"><div class="pageHead row"><div><small>OPTIONAL KNOWLEDGE</small><h1>Developer field guide</h1><p>Quick answers first; detail only when you want it.</p></div><input id="learnSearch" placeholder="Search commit, Python, Supabase…"></div><div class="filter" id="lessonFilters"></div><div class="lessonGrid" id="lessonGrid"></div></section>
+<section class="page" data-page="settings"><div class="pageHead"><small>YOUR WORKSPACE</small><h1>Settings</h1></div><div class="settings">
+<label><span><b>Experience level</b><small>Controls how much guidance appears.</small></span><select id="levelSelect"><option>Beginner</option><option>Practising</option><option>Professional</option></select></label>
+<label><span><b>Light appearance</b><small>Uses a calm lavender gradient.</small></span><input id="lightToggle" type="checkbox"></label>
+<label><span><b>Reduce motion</b><small>Stops movement while keeping clear feedback.</small></span><input id="motionToggle" type="checkbox"></label>
+<button class="danger" data-action="reset">Reset Aware Minds data</button></div></section>
+</main>
+<section class="workbench hidden" id="workbench">
+  <div class="projectbar"><button data-action="back">← Projects</button><span class="projectMark" id="projectMark">P</span><div><small id="projectType">PROJECT</small><b id="projectName">Untitled</b></div><span class="path" id="projectPath">No folder connected</span><button class="primary" data-action="push">Review & push</button></div>
+  <aside class="tools" id="tools"></aside>
+  <section class="stage"><div class="stageTop"><div><small id="stepLabel">STEP 1 OF 7</small><h2 id="stageTitle">Plan</h2></div><button data-action="preview">Preview</button></div><div class="stageBody" id="stageBody"></div><div class="timeline" id="timeline"></div></section>
+  <aside class="inspector"><small>CONTEXT</small><h3 id="nextTitle">Your next action</h3><p id="nextHelp"></p><button class="primary wide" data-action="next">Continue →</button><hr><button data-action="info">ⓘ Explain this screen</button><button data-action="undo">↶ Undo last edit</button><button data-action="vscode">⌁ Open in VS Code</button></aside>
+  <div class="commandbar" id="commandbar"><button data-action="chat">⌘</button><input id="commandText" placeholder="Describe a safe project action…"><button data-action="runCommand">Preview action</button></div>
+</section>
+</div>
+<div class="drawer hidden" id="drawer"><div class="drawerHead"><div><small id="drawerTag">LEARN</small><h2 id="drawerTitle">Context guide</h2></div><button data-action="closeDrawer">×</button></div><div id="drawerBody"></div></div>
+<div class="modal hidden" id="modal"><div class="modalCard"><button class="close" data-action="closeModal">×</button><div id="modalBody"></div></div></div>
+<div class="palette hidden" id="palette"><input id="paletteInput" placeholder="Search pages and actions…"><div id="paletteResults"></div></div>
+<div class="toast hidden" id="toast"></div>
 <script src="assets/app.js"></script></body></html>
