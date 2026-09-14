@@ -1,3 +1,0 @@
-# Admin Studio
-
-Set `ADMIN_EMAIL` and a unique `ADMIN_PASSWORD` of 12+ characters before first startup. The env-based bootstrap creates only a missing account; it never promotes an existing address. `/admin` shows actual user/message/document/request counts, model availability, account states and audit events. Admin can disable non-super-admin accounts, revoking sessions. API prompt versions can be created/activated but the UI editor is pending. Model/provider/tool/branding/rate-limit management is not implemented; do not represent it as available. Developer-owned apps and keys are managed in `/developers`.

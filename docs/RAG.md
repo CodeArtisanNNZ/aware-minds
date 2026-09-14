@@ -1,3 +1,0 @@
-# Document retrieval
-
-The application extracts text from supported file types locally, stores up to 150,000 characters per file in SQLite and ranks up to 200 recent documents owned by the active user/app. It selects up to three 2,200-character overlapping lexical chunks, includes those as untrusted context and returns document ID, filename and chunk number. Unmatched queries return no sources. Tests cover exact retrieval, irrelevant query, cross-app/cross-user isolation, malformed and oversized uploads. No model-produced answer was factually evaluated in this environment because Ollama is absent. Retrieved-source metadata is **not** a verified factual citation or semantic RAG. OCR, multilingual embeddings, virus scanning and parser sandboxing are pending.

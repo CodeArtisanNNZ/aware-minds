@@ -1,5 +1,0 @@
-# Memory
-
-Users explicitly create memories per application. In chat, **Teach correction** asks the user to write the correct fact, then stores only that text in the selected application. Memories can be edited and deleted in the Memory center; no model-generated statement is silently learned. Retrieval includes only the active user/app's last five memories, and a user setting can disable including them in chat. They are labelled untrusted contextual data. Tests cover cross-user/app isolation, editing and disabling. Semantic search and global cross-app preferences are absent. This is contextual learning, **not training or changing the Ollama model weights**.
-
-The Windows launcher stores SQLite data and uploads at `%LOCALAPPDATA%\AwareMinds`, independent of ZIP location. Export your data in Settings for a portable JSON copy. For a consistent SQLite backup while the app is running, set `AWARE_MINDS_DATA_DIR` to that directory and run `python scripts/backup.py`; the backup goes under its `backups` folder. A backup contains sensitive account and memory data and must be protected.

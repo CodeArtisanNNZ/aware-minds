@@ -1,9 +1,7 @@
 @echo off
+setlocal
 cd /d "%~dp0"
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\setup.ps1"
-if errorlevel 2 (pause & exit /b 2)
-if errorlevel 1 (pause & exit /b 1)
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\desktop-shortcut.ps1"
-if errorlevel 1 (pause & exit /b 1)
-echo Installed. Double-click the Aware Minds desktop shortcut to open it in your browser.
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "$s=(New-Object -COM WScript.Shell).CreateShortcut([IO.Path]::Combine([Environment]::GetFolderPath('Desktop'),'Aware Minds.lnk'));$s.TargetPath=[IO.Path]::Combine('%~dp0','index.html');$s.WorkingDirectory='%~dp0';$s.Description='Aware Minds guided developer workspace';$s.Save()"
+if errorlevel 1 (echo Shortcut creation failed. & pause & exit /b 1)
+echo Installed. Open Aware Minds from your desktop.
 pause
