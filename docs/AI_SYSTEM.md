@@ -1,0 +1,5 @@
+# AI system and test boundary
+
+Ollama is the single provider; model detection lists installed names and chooses configured `OLLAMA_MODEL` when available, otherwise the first installed model. Calls use `/api/chat` with 90-second timeout. No external cloud connection or automatic fallback is implemented. Requests fail with actionable 503 when the model is absent or timed out. The non-streaming and SSE routes are exercised with deterministic mocked Ollama responses; real inference remains unverified on this machine because Ollama is not installed.
+
+Prompt assembly: trusted app/admin system instructions; optional project instruction; user-authored memories explicitly marked contextual; up to three retrieved document chunks marked untrusted; latest 16 conversation messages. The document query is bounded to the user's app and 200 most recent files. Long-conversation summarization and multilingual semantic retrieval remain open. RAG source metadata proves retrieval, not factual accuracy of a model-generated answer. Never present source metadata as a verified citation.

@@ -1,0 +1,3 @@
+# API v1
+
+Live OpenAPI: `/docs`. Main cookie-authenticated routes: `/api/v1/auth/*`, `/chat`, `/chat/stream`, `/conversations`, `/documents`, `/memories`, `/projects`, `/search`, `/account/export`, `/developer/apps`, `/admin/*`. Key-authenticated route: `POST /api/v1/integrations/{app_id}/chat`, plus scoped memory search. SSE frames: `start`, `delta`, `done`, `error`. Source metadata describes retrieved chunks, not verified answer grounding. Rate-limited logins return 429; absent Ollama returns 503. Each successful response carries `X-Request-ID` except early cross-origin rejections. `/health` checks API process, not database/model health. A service account key cannot select a different user's identity.
