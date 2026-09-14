@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aware Minds — Animated Workspace Concept</title>
+<style>
+:root{--bg:#0e0b14;--rail:#15101f;--panel:#1a1425;--panel2:#21182e;--line:#30253f;--purple:#7c5aa6;--purple2:#9471bc;--teal:#38afa9;--text:#f1ecf5;--muted:#a99db4;--danger:#d8798a}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit}.app{height:100%;display:grid;grid-template-columns:72px 250px minmax(480px,1fr) 300px;grid-template-rows:58px minmax(0,1fr) 154px;background:var(--bg)}
+.iconrail{grid-row:1/4;background:#0b0810;border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:12px 8px;gap:10px}
+.brand-mini{width:46px;height:46px;margin-bottom:14px;display:grid;place-items:center;border-radius:14px;background:#1b1426;border:1px solid #3b2d4d}
+.railbtn{width:46px;height:46px;border:0;border-radius:12px;color:var(--muted);background:transparent;cursor:pointer;display:grid;place-items:center;transition:.18s ease}
+.railbtn:hover,.railbtn.active{color:white;background:#2a1d3a;transform:translateY(-1px)}.railbtn.active:before{content:"";position:absolute;left:0;width:3px;height:24px;border-radius:9px;background:var(--teal)}
+.railspacer{flex:1}.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--purple);font-weight:800}
+.topbar{grid-column:2/5;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 18px;gap:12px;background:rgba(14,11,20,.92)}
+.crumb{font-size:13px;color:var(--muted)}.crumb b{color:var(--text)}.topspace{flex:1}.chip,.topbtn{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:8px 11px;border-radius:9px}.topbtn{cursor:pointer}.topbtn:hover{color:white;border-color:#5d4777}
+.navigator{grid-column:2;grid-row:2;background:var(--rail);border-right:1px solid var(--line);min-height:0;display:flex;flex-direction:column}
+.panel-title{height:48px;padding:15px 16px 10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:750}
+.project-head{padding:6px 12px 14px}.project-thumb{padding:13px;border-radius:12px;background:linear-gradient(145deg,#251934,#1a1425);border:1px solid #3b2d4d}
+.thumb-row{display:flex;gap:10px;align-items:center}.picon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--teal),#287f86);display:grid;place-items:center;font-weight:850}.small{font-size:11px;color:var(--muted);margin-top:3px}
+.tree{padding:0 10px;overflow:auto}.tree-row{display:flex;align-items:center;gap:8px;padding:8px 9px;border-radius:8px;color:var(--muted);font-size:13px;cursor:pointer;transition:.16s}.tree-row:hover{background:#21172e;color:white;transform:translateX(2px)}.tree-row.active{background:#2b1f3b;color:white}.tree-indent{padding-left:25px}
+.addfile{margin:12px;border:1px dashed #4b385f;background:transparent;color:var(--muted);border-radius:10px;padding:10px;cursor:pointer}.addfile:hover{color:white;border-color:var(--purple2)}
+.canvas{grid-column:3;grid-row:2;min-width:0;min-height:0;background:#100c17;display:flex;flex-direction:column}
+.tabs{height:42px;border-bottom:1px solid var(--line);display:flex;align-items:end;padding-left:12px;gap:4px}.tab{height:34px;padding:8px 13px;color:var(--muted);font-size:12px;border-radius:8px 8px 0 0}.tab.active{background:#1b1426;color:white;border:1px solid var(--line);border-bottom-color:#1b1426}
+.editor{flex:1;min-height:0;display:grid;grid-template-columns:44px 1fr;background:#110d19;padding:18px 0;overflow:auto;font:13px/1.72 "Cascadia Code",Consolas,monospace}.nums{color:#5d5266;text-align:right;padding-right:12px;user-select:none}.code{white-space:pre;color:#d8cfdf}.c-purple{color:#b797dc}.c-teal{color:#63c9c4}.c-gold{color:#d9b77b}.c-dim{color:#81758a}.cursor{display:inline-block;width:7px;height:16px;background:var(--teal);vertical-align:-3px;animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+.inspector{grid-column:4;grid-row:2;background:var(--rail);border-left:1px solid var(--line);padding:0 14px;overflow:auto}.inspect-section{padding:15px 2px;border-bottom:1px solid var(--line)}.label{font-size:11px;color:var(--muted);margin:0 0 8px}.field{padding:10px;border:1px solid var(--line);background:#100c17;border-radius:8px;font-size:13px}.swatches{display:flex;gap:8px}.swatch{width:30px;height:30px;border-radius:8px;border:2px solid transparent}.swatch.sel{border-color:white}.action{width:100%;padding:10px;border-radius:9px;border:1px solid #4e3b63;color:white;background:#251a33;margin-top:8px;text-align:left;cursor:pointer;transition:.16s}.action:hover{background:#312143;transform:translateX(2px)}
+.timeline{grid-column:2/5;grid-row:3;background:#0d0a12;border-top:1px solid var(--line);display:grid;grid-template-columns:250px 1fr 300px}
+.timeline-label{padding:16px;border-right:1px solid var(--line)}.timeline-label b{display:block;margin-bottom:5px}.sequence{display:flex;align-items:center;padding:22px 28px;gap:7px;overflow:hidden}.block{height:58px;min-width:130px;border-radius:9px;padding:11px;border:1px solid #4e3b63;background:#20172c;position:relative}.block.teal{border-color:#267d79;background:#112c2d}.block .small{white-space:nowrap}.connector{height:2px;min-width:25px;flex:1;background:var(--line);position:relative}.connector:after{content:"";position:absolute;right:-1px;top:-3px;border-left:6px solid var(--line);border-top:4px solid transparent;border-bottom:4px solid transparent}.pushbox{border-left:1px solid var(--line);padding:18px}.push{width:100%;height:48px;border:0;border-radius:11px;background:var(--purple);color:white;font-weight:800;cursor:pointer;transition:.2s}.push:hover{background:var(--purple2);transform:translateY(-2px)}.push:active{transform:none}
+.command{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);width:min(680px,calc(100vw - 48px));height:54px;background:#1d1627;border:1px solid #59436e;border-radius:15px;display:none;align-items:center;padding:0 10px 0 16px;box-shadow:0 18px 50px #0008;z-index:4}.command.show{display:flex}.command span{color:var(--muted);flex:1;font-size:13px}.command kbd{padding:4px 7px;border:1px solid var(--line);border-radius:6px;color:var(--muted)}
+/* Intro */
+.intro{position:fixed;inset:0;z-index:20;background:radial-gradient(circle at 50% 45%,#1d1629 0,#0e0b14 54%,#09070d 100%);display:grid;place-items:center;transition:opacity .72s ease,visibility .72s}.intro.done{opacity:0;visibility:hidden;pointer-events:none}.skip{position:absolute;right:24px;top:22px;background:#17111f;border:1px solid var(--line);color:var(--muted);border-radius:9px;padding:8px 12px;cursor:pointer}.skip:hover{color:white}
+.intro-wrap{width:min(930px,92vw);text-align:center}.stage{height:310px;position:relative}.flow-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.route{fill:none;stroke:#453456;stroke-width:2}.pulse{fill:none;stroke:var(--teal);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:0 1000;animation:draw 1.8s .35s ease forwards}.pulse.p2{stroke:var(--purple2);animation-delay:.55s}.node{position:absolute;top:114px;width:112px;padding:12px 8px;border:1px solid #463655;background:#17111f;border-radius:12px;color:var(--muted);font-size:12px;opacity:0;transform:translateY(12px);animation:nodein .45s forwards}.n1{left:1%;animation-delay:.15s}.n2{left:25%;animation-delay:.65s}.n3{right:25%;animation-delay:1.18s}.n4{right:1%;animation-delay:1.72s}.node i{display:block;width:25px;height:25px;margin:0 auto 7px;border-radius:7px;background:#2c2039}.n1 i{background:var(--teal)}.n4 i{background:var(--purple)}
+.logo-reveal{position:absolute;left:50%;top:36px;transform:translateX(-50%) scale(.76);opacity:0;animation:logoIn .9s 2.15s cubic-bezier(.2,.8,.2,1) forwards}.brain{width:150px;height:116px;filter:drop-shadow(0 12px 24px #0008)}.brain .left{fill:url(#tealGrad)}.brain .right{fill:url(#purpleGrad)}.brain path{stroke:#ded6e8;stroke-opacity:.24;stroke-width:1.4}
+.wordmark{font-weight:850;letter-spacing:.22em;margin-top:4px;font-size:18px}.intro-copy{opacity:0;transform:translateY(8px);animation:copyIn .55s 2.85s forwards}.intro-copy h1{font-size:clamp(25px,4vw,42px);margin:4px 0 10px;letter-spacing:-.035em}.intro-copy p{margin:0;color:var(--muted);font-size:15px}.hint{margin-top:24px;color:#706478;font-size:11px;opacity:0;animation:copyIn .4s 3.35s forwards}.progress{height:2px;width:180px;background:#2a2035;margin:18px auto 0;overflow:hidden;border-radius:9px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--purple2));transform:scaleX(0);transform-origin:left;animation:load 4.35s .15s linear forwards}
+.replay{position:fixed;right:18px;bottom:172px;border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:9px 12px;border-radius:9px;cursor:pointer;z-index:5}.replay:hover{color:white}
+@keyframes draw{to{stroke-dasharray:1000 0}}@keyframes nodein{to{opacity:1;transform:none}}@keyframes logoIn{to{opacity:1;transform:translateX(-50%) scale(1)}}@keyframes copyIn{to{opacity:1;transform:none}}@keyframes load{to{transform:scaleX(1)}}
+@media(max-width:980px){.app{grid-template-columns:64px 210px 1fr;grid-template-rows:58px 1fr 140px}.inspector{display:none}.topbar{grid-column:2/4}.timeline{grid-column:2/4;grid-template-columns:210px 1fr}.pushbox{display:none}.navigator{grid-column:2}.canvas{grid-column:3}.iconrail{grid-row:1/4}.n2{left:23%}.n3{right:23%}}
+@media(max-width:680px){.app{grid-template-columns:56px 1fr;grid-template-rows:54px 1fr 118px}.navigator{display:none}.topbar{grid-column:2}.canvas{grid-column:2}.timeline{grid-column:2;grid-template-columns:1fr}.timeline-label{display:none}.sequence{padding:14px}.block{min-width:106px;height:52px;padding:8px}.stage{height:280px}.node{width:86px}.n2,.n3{display:none}.logo-reveal{top:44px}.intro-copy p{padding:0 20px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}.progress{display:none}}
+</style>
+</head>
+<body>
+<div class="intro" id="intro" aria-label="Aware Minds introduction">
+  <button class="skip" id="skip">Skip intro <span aria-hidden="true">↗</span></button>
+  <div class="intro-wrap">
+    <div class="stage">
+      <svg class="flow-svg" viewBox="0 0 930 310" aria-hidden="true">
+        <path class="route" d="M70 178 H260 C320 178 320 80 405 80 H525 C610 80 610 178 670 178 H860"/>
+        <path class="pulse" d="M70 178 H260 C320 178 320 80 405 80"/>
+        <path class="pulse p2" d="M525 80 C610 80 610 178 670 178 H860"/>
+      </svg>
+      <div class="node n1"><i></i>Project</div><div class="node n2"><i></i>Files</div>
+      <div class="node n3"><i></i>Review</div><div class="node n4"><i></i>GitHub</div>
+      <div class="logo-reveal">
+        <svg class="brain" viewBox="0 0 180 140" role="img" aria-label="Aware Minds brain mark">
+          <defs><linearGradient id="tealGrad" x1="0" x2="1"><stop stop-color="#38afa9"/><stop offset="1" stop-color="#78d8d3"/></linearGradient><linearGradient id="purpleGrad" x1="0" x2="1"><stop stop-color="#9471bc"/><stop offset="1" stop-color="#60417f"/></linearGradient></defs>
+          <path class="left" d="M88 18C69 3 44 14 42 35 18 36 12 65 26 78 11 99 34 122 56 112 64 132 88 125 88 106Z"/>
+          <path class="right" d="M92 18c19-15 44-4 46 17 24 1 30 30 16 43 15 21-8 44-30 34-6 20-22 25-32 8Z"/>
+          <path d="M52 39c19 4 9 20 24 24M37 73c14-6 23 1 26 13M55 111c-1-15 8-22 22-23M128 39c-19 4-9 20-24 24M143 73c-14-6-23 1-26 13M125 111c1-15-8-22-22-23" fill="none"/>
+        </svg>
+        <div class="wordmark">AWARE MINDS</div>
+      </div>
+    </div>
+    <div class="intro-copy"><h1>Every project. One visual workflow.</h1><p>Your projects, files and Git workflow—one visual workspace.</p></div>
+    <div class="progress"><span></span></div><div class="hint">Click anywhere or press Esc to skip</div>
+  </div>
+</div>
+
+<main class="app">
+  <aside class="iconrail">
+    <div class="brand-mini">
+      <svg width="34" height="28" viewBox="0 0 180 140" aria-hidden="true"><path fill="#38afa9" d="M88 18C69 3 44 14 42 35 18 36 12 65 26 78 11 99 34 122 56 112 64 132 88 125 88 106Z"/><path fill="#9471bc" d="M92 18c19-15 44-4 46 17 24 1 30 30 16 43 15 21-8 44-30 34-6 20-22 25-32 8Z"/></svg>
+    </div>
+    <button class="railbtn active" title="Projects">▦</button><button class="railbtn" title="Files">⌑</button><button class="railbtn" title="Database">◫</button><button class="railbtn" title="Git">⑂</button><button class="railbtn" title="Terminal">⌘</button>
+    <div class="railspacer"></div><button class="railbtn" title="Settings">⚙</button><div class="avatar">N</div>
+  </aside>
+  <header class="topbar"><span class="crumb">Projects / <b>Starter Portfolio</b> / src / App.tsx</span><div class="topspace"></div><span class="chip">main</span><button class="topbtn" id="palette">⌘ Command</button></header>
+  <aside class="navigator">
+    <div class="panel-title">Project</div>
+    <div class="project-head"><div class="project-thumb"><div class="thumb-row"><div class="picon">SP</div><div><b>Starter Portfolio</b><div class="small">React · Local repository</div></div></div></div></div>
+    <div class="panel-title">Files</div>
+    <div class="tree">
+      <div class="tree-row">⌄ &nbsp; src</div><div class="tree-row tree-indent active">◇ &nbsp; App.tsx</div><div class="tree-row tree-indent"># &nbsp; styles.css</div><div class="tree-row tree-indent">◇ &nbsp; main.tsx</div><div class="tree-row">› &nbsp; public</div><div class="tree-row">{} &nbsp; package.json</div><div class="tree-row">⌁ &nbsp; README.md</div>
+    </div><button class="addfile">＋ Add or drop a file</button>
+  </aside>
+  <section class="canvas"><div class="tabs"><div class="tab active">App.tsx&nbsp; ×</div><div class="tab">styles.css&nbsp; ×</div></div>
+    <div class="editor"><div class="nums">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11</div><div class="code"><span class="c-purple">import</span> { Hero } <span class="c-purple">from</span> <span class="c-gold">'./components/Hero'</span>
+<span class="c-purple">import</span> <span class="c-gold">'./styles.css'</span>
+
+<span class="c-purple">export default function</span> <span class="c-teal">App</span>() {
+  <span class="c-purple">return</span> (
+    &lt;<span class="c-teal">main</span> className=<span class="c-gold">"portfolio"</span>&gt;
+      &lt;<span class="c-teal">Hero</span>
+        title=<span class="c-gold">"Build something clear."</span>
+        accent=<span class="c-gold">"teal"</span>
+      /&gt;<span class="cursor"></span>
+    &lt;/<span class="c-teal">main</span>&gt;
+  )
+}</div></div>
+  </section>
+  <aside class="inspector"><div class="panel-title">Properties</div>
+    <div class="inspect-section"><p class="label">Selected</p><div class="field">Hero section</div></div>
+    <div class="inspect-section"><p class="label">Project accent</p><div class="swatches"><span class="swatch sel" style="background:#38afa9"></span><span class="swatch" style="background:#7c5aa6"></span><span class="swatch" style="background:#c98b61"></span></div></div>
+    <div class="inspect-section"><p class="label">Quick actions</p><button class="action">Preview website →</button><button class="action">Open project folder →</button><button class="action">Run development server →</button></div>
+  </aside>
+  <section class="timeline"><div class="timeline-label"><b>Change timeline</b><span class="small">3 changes ready to review</span></div><div class="sequence"><div class="block teal"><b>＋ Hero.tsx</b><div class="small">Added</div></div><div class="connector"></div><div class="block"><b>● App.tsx</b><div class="small">Edited · 8 lines</div></div><div class="connector"></div><div class="block"><b>● styles.css</b><div class="small">Edited · 14 lines</div></div></div><div class="pushbox"><div class="small">Commit: Update portfolio hero</div><button class="push">Review &amp; Push →</button></div></section>
+</main>
+<button class="replay" id="replay">↻ Replay intro</button>
+<div class="command" id="command"><span>Search files or type an action…</span><kbd>Esc</kbd></div>
+<script>
+const intro=document.getElementById('intro'),command=document.getElementById('command');
+let timer=setTimeout(finish,4700);
+function finish(){clearTimeout(timer);intro.classList.add('done')}
+function replay(){intro.classList.remove('done');void intro.offsetWidth;document.querySelectorAll('.intro *').forEach(el=>{el.style.animation='none';void el.offsetWidth;el.style.animation=''});timer=setTimeout(finish,4700)}
+document.getElementById('skip').onclick=e=>{e.stopPropagation();finish()};
+intro.addEventListener('click',finish);document.getElementById('replay').onclick=replay;
+document.getElementById('palette').onclick=()=>command.classList.toggle('show');
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){finish();command.classList.remove('show')}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();command.classList.toggle('show')}});
+</script>
+</body>
+</html>
