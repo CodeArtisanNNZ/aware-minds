@@ -1,0 +1,1 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';test('guided workspace has no legacy AI controls',()=>{const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');assert.match(html,/Build my first project/);assert.match(html,/Continue from GitHub/);assert.doesNotMatch(html,/Ollama|llama3|Sign in|Account/)});

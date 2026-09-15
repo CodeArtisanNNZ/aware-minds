@@ -1,3 +1,29 @@
+# Build state
+
+## Guided Developer Workspace v1 — 2026-09-14
+
+Status: frontend milestone ready for review on `build/guided-developer-workspace-v1`.
+
+Implemented:
+
+- Replaced the invalid one-byte `apps` placeholder with a real `apps/web` frontend tree.
+- Added a prebuilt browser UI under `apps/web/dist` for the existing desktop launcher.
+- Added first-launch animation using the approved muted purple and teal direction.
+- Added an empty universal project library; no personal project seeds are included.
+- Added goal-based entry points: build, local import, GitHub continuation, repair and sample project.
+- Added Beginner, Practising and Professional interface levels.
+- Added the six-stage roadmap: Plan, Build, Data, Test, GitHub and Publish.
+- Added a contextual “I’m lost” rescue flow, project-system map and learning library.
+- Added light/dark appearance while retaining the purple brand.
+- Connected project listing and creation to the existing local `/api/v1/hub` endpoints, with a browser-storage fallback for standalone UI review.
+- Added a minimal frontend test preventing reintroduction of legacy Ollama, account and sign-in controls.
+
+Current limitations:
+
+- This milestone establishes the universal guided shell; visual page generation, database-provider OAuth, GitHub clone/push dialogs and hosting-provider deployment remain implementation work.
+- The backend still contains legacy disabled AI endpoints for compatibility. They are not exposed by this frontend and should be removed through a deliberate API/database migration rather than by deleting unrelated working routes.
+- Automated Python/npm execution was not available in the connector environment; tests must run in CI or a local checkout before merge.
+
 # Build state — 0.7.0 universal developer workspace
 
 ## Universal workflow release (2026-09-14)
